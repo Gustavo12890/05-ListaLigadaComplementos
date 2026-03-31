@@ -2,7 +2,7 @@
 using namespace std;
 
 // definicao de tipo
-struct NO {
+struct NO { //Agrupa variáveis
 	int valor;
 	NO* prox;
 };
@@ -30,7 +30,7 @@ void menu()
 {
 	int op = 0;
 	while (op != 7) {
-		system("cls"); // somente no windows
+		//system("cls"); somente no windows
 		cout << "Menu Lista Ligada";
 		cout << endl << endl;
 		cout << "1 - Inicializar Lista \n";
@@ -64,13 +64,13 @@ void menu()
 			break;
 		}
 
-		system("pause"); // somente no windows
+		//system("pause"); somente no windows
 	}
 }
 
 void inicializar()
 {
-	// se a lista j� possuir elementos
+	// se a lista j� possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -119,6 +119,20 @@ void inserirElemento()
 	if (novo == NULL)
 	{
 		return;
+	}
+
+	NO* atual = primeiro;
+	NO* anterior = NULL;
+
+	while (atual != NULL && atual->valor < novo->valor) {
+		anterior = atual;
+		atual = atual->prox;
+	}
+
+	if(atual != NULL && atual->valor == novo->valor) {
+		cout << "Elemento já existe";
+	}else {
+		
 	}
 
 	cout << "Digite o elemento: ";

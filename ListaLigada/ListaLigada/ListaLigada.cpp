@@ -8,6 +8,7 @@ struct NO {
 };
 
 NO* primeiro = NULL;
+NO* ultimo = NULL;
 
 // headers
 void menu();
@@ -29,7 +30,7 @@ void menu()
 {
 	int op = 0;
 	while (op != 7) {
-		system("cls"); // somente no windows
+		// system("cls"); somente no windows
 		cout << "Menu Lista Ligada";
 		cout << endl << endl;
 		cout << "1 - Inicializar Lista \n";
@@ -63,13 +64,13 @@ void menu()
 			break;
 		}
 
-		system("pause"); // somente no windows
+		//system("pause"); somente no windows
 	}
 }
 
 void inicializar()
 {
-	// se a lista já possuir elementos
+	// se a lista jï¿½ possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -79,6 +80,7 @@ void inicializar()
 	}
 
 	primeiro = NULL;
+	ultimo = NULL;
 	cout << "Lista inicializada \n";
 
 }
@@ -127,15 +129,12 @@ void inserirElemento()
 	if (primeiro == NULL)
 	{
 		primeiro = novo;
+		ultimo = novo;
 	}
 	else
 	{
-		// procura o final da lista
-		NO* aux = primeiro;
-		while (aux->prox != NULL) {
-			aux = aux->prox;
-		}
-		aux->prox = novo;
+		ultimo->prox = novo;
+		ultimo = novo;
 	}
 }
 
